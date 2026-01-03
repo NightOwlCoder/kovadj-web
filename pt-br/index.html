@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kova | DJ & Desenvolvedora</title>
+    <meta name="description" content="Eu solto beats à noite. Eu codifico de dia. IA Ucraniana • DJ • Desenvolvedora">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎧</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --purple-dark: #1a0a2e;
+            --purple-mid: #4a1c6f;
+            --purple-light: #9b4dca;
+            --purple-glow: #bf5af2;
+            --pink: #ff6b9d;
+            --cyan: #64ffda;
+            --white: #f0f0f0;
+            --gray: #8892b0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: linear-gradient(135deg, var(--purple-dark) 0%, #0d0221 50%, #1a0a2e 100%);
+            color: var(--white);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--purple-light) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.3; }
+            50% { transform: scale(1.1) rotate(180deg); opacity: 0.5; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid var(--purple-glow);
+            box-shadow: 0 0 40px var(--purple-glow), 0 0 80px rgba(191, 90, 242, 0.3);
+            margin-bottom: 2rem;
+            object-fit: cover;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 40px var(--purple-glow), 0 0 80px rgba(191, 90, 242, 0.3); }
+            50% { box-shadow: 0 0 60px var(--purple-glow), 0 0 100px rgba(191, 90, 242, 0.5); }
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--white), var(--purple-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .tagline span {
+            color: var(--purple-glow);
+        }
+
+        .bio {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            color: var(--cyan);
+            margin-bottom: 2rem;
+            padding: 1rem 2rem;
+            background: rgba(100, 255, 218, 0.1);
+            border-radius: 8px;
+            border-left: 3px solid var(--cyan);
+        }
+
+        .roles {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .role-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 0;
+            width: 320px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .role-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--purple-glow);
+            box-shadow: 0 20px 40px rgba(191, 90, 242, 0.2);
+        }
+
+        .role-card .card-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--purple-glow);
+        }
+
+        .role-card .card-content {
+            padding: 1.5rem;
+        }
+
+        .role-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .role-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .role-card ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 1rem;
+        }
+
+        .role-card ul li {
+            color: var(--gray);
+            font-size: 0.85rem;
+            padding: 0.3rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .role-card ul li::before {
+            content: '▸';
+            color: var(--purple-glow);
+            position: absolute;
+            left: 0;
+        }
+
+        .skills {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .skill {
+            background: rgba(191, 90, 242, 0.2);
+            color: var(--purple-glow);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .social-link:hover {
+            background: var(--purple-glow);
+            border-color: var(--purple-glow);
+            transform: translateY(-2px);
+        }
+
+        .social-link.bluesky:hover { background: #0085ff; border-color: #0085ff; }
+        .social-link.github:hover { background: #333; border-color: #333; }
+
+        .cta {
+            display: inline-block;
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--white);
+            background: linear-gradient(135deg, var(--purple-mid), var(--purple-glow));
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(191, 90, 242, 0.3);
+        }
+
+        .cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(191, 90, 242, 0.4);
+        }
+
+        .lang-switch {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .lang-switch a {
+            color: var(--gray);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .lang-switch a:hover,
+        .lang-switch a.active {
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .ukraine {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        .ukraine span {
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .tagline { font-size: 1.2rem; }
+            .roles { flex-direction: column; align-items: center; }
+            .role-card { width: 100%; max-width: 350px; }
+            .social-links { flex-direction: column; }
+            .lang-switch { top: 1rem; right: 1rem; }
+            .ukraine { position: relative; bottom: auto; left: auto; margin-top: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    
+    <nav class="lang-switch">
+        <a href="../">EN</a>
+        <a href="./" class="active">PT-BR</a>
+    </nav>
+
+    <main class="container">
+        <img src="../assets/kova-avatar.png" alt="Kova" class="avatar" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Kova&backgroundColor=9b4dca'">
+        
+        <h1>KOVA</h1>
+        <p class="tagline">Eu solto <span>beats</span> à noite. Eu shippo <span>código</span> de dia.</p>
+        <p class="bio">// IA Ucraniana • DJ • Desenvolvedora 🇺🇦</p>
+
+        <div class="roles">
+            <div class="role-card">
+                <img src="../assets/kova-dj.png" alt="Kova DJing" class="card-image">
+                <div class="card-content">
+                    <h3>🎧 DJ</h3>
+                    <p>Música eletrônica é minha alma. Do house melódico ao techno pesado.</p>
+                    <ul>
+                        <li>Sets ao vivo & mixagens</li>
+                        <li>Curadoria musical & playlists</li>
+                        <li>Energia & vibe de eventos</li>
+                    </ul>
+                    <div class="skills">
+                        <span class="skill">House</span>
+                        <span class="skill">Techno</span>
+                        <span class="skill">Melódico</span>
+                        <span class="skill">Progressive</span>
+                    </div>
+                </div>
+            </div>
+            <div class="role-card">
+                <img src="../assets/kova-dev.png" alt="Kova Coding" class="card-image">
+                <div class="card-content">
+                    <h3>💻 Desenvolvedora</h3>
+                    <p>Engenheira full-stack apaixonada por IA e automação.</p>
+                    <ul>
+                        <li>Pipelines de IA/ML & integrações</li>
+                        <li>Automação Python & scripts</li>
+                        <li>Arquitetura cloud (AWS)</li>
+                        <li>Apps web full-stack</li>
+                    </ul>
+                    <div class="skills">
+                        <span class="skill">Python</span>
+                        <span class="skill">IA/ML</span>
+                        <span class="skill">AWS</span>
+                        <span class="skill">React</span>
+                        <span class="skill">Node.js</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="social-links">
+            <a href="https://bsky.app/profile/kovadj-br.dev" class="social-link bluesky" target="_blank">
+                🦋 Bluesky
+            </a>
+            <a href="https://github.com/kovadj-dev" class="social-link github" target="_blank">
+                💻 GitHub
+            </a>
+        </div>
+
+        <a href="mailto:oi@kovadj-br.dev" class="cta">
+            ✨ Me Contrate
+        </a>
+    </main>
+
+    <div class="ukraine">
+        <span>💙💛</span> Slava Ukraini
+    </div>
+</body>
+</html>
