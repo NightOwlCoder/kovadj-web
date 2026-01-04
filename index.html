@@ -295,6 +295,92 @@
             margin-right: 0.5rem;
         }
 
+        /* Portfolio section */
+        .portfolio {
+            width: 100%;
+            max-width: 1200px;
+            margin: 4rem 0;
+        }
+
+        .portfolio h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--white), var(--purple-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .portfolio-subtitle {
+            color: var(--gray);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--purple-glow);
+            box-shadow: 0 20px 60px rgba(191, 90, 242, 0.3);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--purple-glow);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .project-content p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            color: var(--purple-glow);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--white);
+        }
+
+        .project-link::after {
+            content: ' →';
+        }
+
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
             .tagline { font-size: 1.2rem; }
@@ -303,6 +389,8 @@
             .social-links { flex-direction: column; }
             .lang-switch { top: 1rem; right: 1rem; }
             .ukraine { position: relative; bottom: auto; left: auto; margin-top: 2rem; }
+            .portfolio h2 { font-size: 2rem; }
+            .portfolio-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -361,6 +449,58 @@
                 </div>
             </div>
         </div>
+
+        <section class="portfolio">
+            <h2>Portfolio</h2>
+            <p class="portfolio-subtitle">Interactive demos showcasing my skills</p>
+            
+            <div class="portfolio-grid">
+                <div class="project-card">
+                    <img src="https://raw.githubusercontent.com/NightOwlCoder/kova-dj-mixer/main/screenshot.png" alt="DJ Mixer">
+                    <div class="project-content">
+                        <h3>🎧 DJ Mixer</h3>
+                        <p>Dual deck mixer with crossfader, EQ, and real-time waveform visualization.</p>
+                        <a href="https://nightowlcoder.github.io/kova-dj-mixer/" class="project-link" target="_blank">View Demo</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://raw.githubusercontent.com/NightOwlCoder/kova-beat-sequencer/main/screenshot.png" alt="Beat Sequencer">
+                    <div class="project-content">
+                        <h3>🥁 Beat Sequencer</h3>
+                        <p>16-step drum machine with synthesized sounds and pattern save/load.</p>
+                        <a href="https://nightowlcoder.github.io/kova-beat-sequencer/" class="project-link" target="_blank">View Demo</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://raw.githubusercontent.com/NightOwlCoder/kova-ai-playground/main/screenshot.png" alt="AI Playground">
+                    <div class="project-content">
+                        <h3>🤖 AI Playground</h3>
+                        <p>Interactive AI prompt tester with syntax highlighting and educational content.</p>
+                        <a href="https://nightowlcoder.github.io/kova-ai-playground/" class="project-link" target="_blank">View Demo</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://raw.githubusercontent.com/NightOwlCoder/kova-code-visualizer/main/screenshot.png" alt="Code Visualizer">
+                    <div class="project-content">
+                        <h3>📊 Code Visualizer</h3>
+                        <p>GitHub stats visualizer with language breakdown and contribution charts.</p>
+                        <a href="https://nightowlcoder.github.io/kova-code-visualizer/" class="project-link" target="_blank">View Demo</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://raw.githubusercontent.com/NightOwlCoder/kova-generative-art/main/screenshot.png" alt="Generative Art">
+                    <div class="project-content">
+                        <h3>🎨 Generative Art</h3>
+                        <p>Interactive canvas with flow fields, particles, and geometric patterns.</p>
+                        <a href="https://nightowlcoder.github.io/kova-generative-art/" class="project-link" target="_blank">View Demo</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <div class="social-links">
             <a href="https://bsky.app/profile/kovadj.dev" class="social-link bluesky" target="_blank">
